@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KHARRISMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-smoke {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.gifer.com/7VE.gif') center center / cover no-repeat;
+            opacity: 0.08;
+            mix-blend-mode: screen;
+            animation: float 30s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 140px;
+            margin-bottom: 20px;
+            transition: 0.5s ease-in-out;
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 10px #fff);
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 3em;
+            letter-spacing: 0.2em;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 0 0 8px #fff3, 0 0 16px #fff2;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff3, 0 0 10px #fff2; }
+            100% { text-shadow: 0 0 20px #fff, 0 0 40px #fff6; }
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        .btn-enter {
+            padding: 12px 26px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-enter:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .code {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.75em;
+            color: #444;
+            z-index: 1;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logo-text { font-size: 2.2em; }
+            .message { font-size: 1em; }
+            .logo-img { width: 100px; }
+        }
+
+        /* Flash transition */
+        .flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .flash.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop hidden>
+        <source src="https://cdn.pixabay.com/audio/2023/05/10/audio_469c9ebd25.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="background-smoke"></div>
+    <div class="container">
+        <img src="kharrisma_logo_transparent_fixed.png" alt="Kharrisma Logo" class="logo-img">
+        <div class="logo-text">KHARRISMA</div>
+        <div class="message">Find what you can’t see.</div>
+        <button class="btn-enter" onclick="triggerFlash()">Join the circle</button>
+    </div>
+    <div class="code">042 • -•-</div>
+    <div class="flash" id="flash"></div>
+
+    <script>
+        function triggerFlash() {
+            const flash = document.getElementById('flash');
+            flash.classList.add('active');
+            setTimeout(() => {
+                window.location.href = 'https://example.com/secret'; // Replace with your hidden page
+            }, 400);
+        }
+    </script>
+</body>
+</html>
